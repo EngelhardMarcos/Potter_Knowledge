@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo/pwicon.ico" />
+    <title>Caderneta</title>
+</head>
+<body>
+    <a href="../index.html"> Return</a>
+    <div class="leaderboard">
+        <table>
+            <tr>
+                <td> <img src="../assets/img/house/Gryffindor.png" alt="Gryffindor" width="160px" height="200px"></td>
+                <td> <img src="../assets/img/house/Hufflepuff.png" alt="Hufflepuff" width="160px" height="200px"></td>
+                <td> <img src="../assets/img/house/Ravenclaw.png" alt="Ravenclaw" width="160px" height="200px"></td>
+                <td> <img src="../assets/img/house/Slytherin.png" alt="Slytherin" width="160px" height="200px"></td>
+            </tr>
+            <tr>
+                <td><span id="gryffscore"> 0</span></td>
+                <td><span id="hufflescore"> 0</span></td>
+                <td><span id="ravenscore"> 0</span></td>
+                <td><span id="slythscore"> 0</span></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="booklet hide" id="booklet">
+        
+        <h2> Booklet </h2>
+        <div class="grid-parent-container">
+            <div id="question1"> Question </div>
+            <div class="grid-buttonImage-container">
+                <div id="answerbtn1" class="gridbtn"></div>
+                <div class="rect">
+                    <img src="" alt="" id="Response1">
+                </div>
+            </div>
+
+            <div id="question2"> Question </div>
+            <div class="grid-buttonImage-container">
+                <div id="answerbtn2" class="gridbtn"></div>
+                <div class="rect">
+                    <img src="" alt="" id="Response2">
+                </div>
+            </div>
+
+            <div id="question3"> Question </div>
+            <div class="grid-buttonImage-container">
+                <div id="answerbtn3" class="gridbtn"></div>
+                <div class="rect">
+                    <img src="" alt="" id="Response3">
+                </div>
+            </div>
+
+            <div id="question4"> Question </div>
+            <div class="grid-buttonImage-container">
+                <div id="answerbtn4" class="gridbtn"></div>
+                <div class="rect">
+                    <img src="" alt="" id="Response4">
+                </div>
+            </div>
+
+            <div id="question5"> Question </div>
+            <div class="grid-buttonImage-container">
+                <div id="answerbtn5" class="gridbtn"></div>
+                <div class="rect">
+                    <img src="" alt="" id="Response5">
+                </div>
+            </div>
+
+            <div id="question6"> Question </div>
+            <div class="grid-buttonImage-container">
+                <div id="answerbtn6" class="gridbtn"></div>
+                <div class="rect">
+                    <img src="" alt="" id="Response6">
+                </div>
+            </div>
+
+            <div id="question7"> Question </div>
+            <div class="grid-buttonImage-container">
+                <div id="answerbtn7" class="gridbtn"></div>
+                <div class="rect">
+                    <img src="" alt="" id="Response7">
+                </div>
+            </div>
+        
+        
+        </div>
+        
+    </div>
+    <button data-modal-target="#modalbooklet" id="houseSortedbtn">Open Modal</button>
+    
+    <div class="modal" id="modalbooklet">
+        <div class="modal-header">
+            <div class="title">Choose the house: </div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <button class="housebutton grif" id="gryfbtn"> <span> Gryffindor</span> </button>
+            <button class="housebutton huff" id="pufffbtn"> <span> Hufflepuff</span></button>
+            <button class="housebutton raven" id="ravenbtn"> <span> Ravenclaw</span></button>
+            <button class="housebutton slyth" id="serpbtn"> <span> Slytheryn</span></button>
+        </div>
+    </div>
+    <div class="modal" id="modalWin">
+        <div class="modal-header">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+        <div class="modal-body">
+            <p> Parabéns, ajudastes a tua casa ganhar a House Cup com x pontos </p>
+        </div>
+    </div>
+    <div class="modal" id="modalLose">
+        <div class="modal-header">
+            <p> Sorte para a próxima, ainda não é desta...</p>
+        </div>
+        <div class="modal-body">
+            <div class="text-center mt-4">
+                <a class="btn btn-xl btn-outline-light" href="htmls/booklet.html">                      
+                    Tentar novamente!
+                </a>
+            </div>
+            <div class="text-center mt-4">
+                <a class="btn btn-xl btn-outline-light" href="htmls/booklet.html">                      
+                    Voltar a Home
+                </a>
+            </div>
+        </div>
+    </div>
+  <div class="" id="overlay"></div>
+    
+    <br>
+
+    <div class="container hide">
+        <div class="search-class">
+            <label for="search"> Pesquisar personagem</label>
+            <input type="search" value="" id="searchBar">
+        </div>
+    
+        <div class="character-card">
+            <template data-harrypotter-template>
+                <div class="name" ptemplate></div>
+                <div class="image" imgtemplate></div>
+            </template>
+        </div>
+
+        <ul id="characterlist"> </ul>
+    </div>
+    
+    
+
+    <script src="../js/booklet.js"></script>
+</body>
+</html>
