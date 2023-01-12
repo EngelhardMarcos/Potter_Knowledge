@@ -85,12 +85,7 @@ h2 {
 input{
     font-size: 1rem;
 }
-.container {
-    padding: 40px;
-    margin: 0 auto;
-    max-width: 800px;
-    text-align: center;
-}
+
 #charactersList {
     padding-inline-start: 0;
     display: grid;
@@ -231,7 +226,7 @@ body.wrong{
     
 }
 
-.modal{
+.modalbooklet{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -245,11 +240,11 @@ body.wrong{
     max-width: 80%;
 }
 
-.modal.active{
+.modalbooklet.active{
     transform: translate(-50%, -50%) scale(1);
 }
 
-.modal-header{
+.modalbooklet-header{
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
@@ -257,12 +252,12 @@ body.wrong{
     border-bottom: 1px solid black;
 }
 
-.modal-header .title{
+.modalbooklet-header .title{
     font-size: 1.25rem;
     font-weight: bold;
 }
 
-.modal-header .close-button{
+.modalbooklet-header .close-button{
     cursor: pointer;
     border: none;
     outline: none;
@@ -271,7 +266,7 @@ body.wrong{
     font-weight: bold;
 }
 
-.modal-body{
+.modalbooklet-body{
     padding: 10px 15px;
     text-align: center;
 }

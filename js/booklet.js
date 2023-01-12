@@ -30,6 +30,7 @@ const serpentnbtn = document.querySelector('#serpbtn')
 const ravennbtn = document.querySelector('#ravenbtn')
 const sortbtn = document.querySelector('#houseSortedbtn')
 const booklet = document.querySelector('#booklet')
+const questionHandler = document.getElementById('questionHandler')
 const scorespanArray = []
 let currentPlayerScore
 
@@ -51,7 +52,7 @@ window.onload = function StartModal() {
 
 
 closeModalButtons.addEventListener('click', () => {
-        const modal = closeModalButtons.closest('.modal')
+        const modal = closeModalButtons.closest('.modalbooklet')
         closeModal(modal)
     })
 
@@ -261,10 +262,23 @@ const questions = [
 ]
 loadCharacters();
 GetQuestionTemplate();
-loadQuestions();
+loadQuestions()
+
 //Questions
 function GetQuestionTemplate() {
-    for (let i = 1; i <= 7; i++) {
+    questionHandler.innerHTML = ""
+    let questionsTotal = 7
+    for (let index = 0; index < questionsTotal; index++) {
+        let questionTemplate = `<div id="question${index}"> Question </div>
+        <div class="grid-buttonImage-container">
+            <div id="answerbtn${index}" class="gridbtn"></div>
+            <div class="rect">
+                <img src="" alt="" id="Response${index}">
+            </div>
+        </div>`
+        questionHandler.innerHTML += questionTemplate
+    }
+    for (let i = 0; i < questionsTotal; i++) {
         questionArray.push(new questoinTemplate(document.getElementById(`question${i}`), document.getElementById(`answerbtn${i}`)
     ,document.getElementById(`Response${i}`)));
     }
@@ -272,7 +286,7 @@ function GetQuestionTemplate() {
 function loadQuestions(){
     
     shuffledQuestions = questions.sort(() => Math.random() - .5)
-    for (let i = 0; i < questionArray.length; i++) { 
+    for (let i = 0; i < questionArray.length; i++) {
         showQuestion(shuffledQuestions[i], questionArray[i].questionElement, questionArray[i].answerButtonsElement,questionArray[i].imageRes);
         questionArray[i].imageRes.style.visibility = "hidden";
         
@@ -375,7 +389,7 @@ ravennbtn.addEventListener('click', function(){
 function BeingSorted(houseButton) {
     sortbtn.classList.add('hide')
     booklet.classList.remove('hide')
-    const modal = closeModalButtons.closest('.modal')
+    const modal = closeModalButtons.closest('.modalbooklet')
     closeModal(modal)
     for (let i = 0; i < scorespanArray.length; i++) {
         if (currentPlayerScore == scorespanArray[i]) {

@@ -17,6 +17,7 @@ let searchBar = document.getElementById('searchBar')
 let i = 0;
 let j = 0;
 
+
 searchBar.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
     //conver name to lowercase
@@ -105,7 +106,7 @@ const displayModal = (characters) => {
 
 loadCharacters();
 //From the template
-window.addEventListener('DOMContentLoaded', event => {
+/*window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
     var navbarShrink = function () {
@@ -149,4 +150,4 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-});
+});*/
