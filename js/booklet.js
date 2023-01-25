@@ -16,11 +16,8 @@ let shuffledQuestions;
 let currentQuestionIndex = 0;
 
 
-//Search
-const searchBar = document.getElementById('searchBar')
-
 const openModalButtons = document.querySelector('[data-modal-target]')
-const closeModalButtons = document.querySelector('[data-close-button]')
+const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
 
 //housecup
@@ -33,6 +30,13 @@ const booklet = document.querySelector('#booklet')
 const questionHandler = document.getElementById('questionHandler')
 const scorespanArray = []
 let currentPlayerScore
+
+//Questions to answer
+let answerasked = 0
+const questionsTotal = 11
+const winModal = document.querySelector('#modalWin')
+const loseModal = document.querySelector('#modalLose')
+let houseImage
 
 scorespanArray.push(document.querySelector('#gryffscore'), document.querySelector('#hufflescore')
 , document.querySelector('#ravenscore') , document.querySelector('#slythscore'))
@@ -51,16 +55,14 @@ window.onload = function StartModal() {
 
 
 
-closeModalButtons.addEventListener('click', () => {
-        const modal = closeModalButtons.closest('.modalbooklet')
-        closeModal(modal)
-    })
+closeModalButtons.forEach(closeModalButton => closeModalButton.addEventListener('click', () => {
+    const modal = closeModalButton.closest('.modalbooklet')
+    closeModal(modal)
+})) 
 
 
 function openModal(modal) {
     if(modal == null) return;
-    
-    
     modal.classList.add('active');
     overlay.classList.add('active');
 
@@ -160,102 +162,66 @@ const questions = [
         ]
     },
     {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
+        question : "Quem substituiu Albus Dumbledore como headmaster depois deste ter sido morto?",
          answers: [
-            { text: "Cho Chang", correct: true},
+            { text: "Severus Snape", correct: false},
+            { text: "Horace Slughorn", correct: false},
+            { text: "Sirius Black", correct: false},
+            { text: "Minerva McGonagall", correct: true}
+        ]
+    },
+    {
+        question : "Qual dos seguintes nomes pertence a Slytheryn?",
+         answers: [
+            { text: "Luna Lovegood", correct: false},
             { text: "Neville Longbottom", correct: false},
+            { text: "Vincent Crabbe", correct: true},
+            { text: "Ron Weasley", correct: false}
+        ]
+    },
+    {
+        question : "Quem é o pai do Draco?",
+         answers: [
+            { text: "Narcissa Malfoy", correct: false},
+            { text: "Scorpius Malfoy", correct: false},
+            { text: "Lucius Malfoy", correct: true},
+            { text: "Draco Malfoy", correct: false}
+        ]
+    },
+    {
+        question : "Qual dos seguintes nomes consegue ver Thestrials (raça de cavalo alado)?",
+         answers: [
+            { text: "Ron Weasley", correct: false},
+            { text: "Luna Lovegood", correct: true},
             { text: "Hermione Granger", correct: false},
             { text: "Ron Weasley", correct: false}
         ]
     },
     {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
+        question : "Quem se tornou o parceiro do Harry Potter quando se graduou de Hogsworth?",
          answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
+            { text: "Cho Chang", correct: false},
+            { text: "Bellatrix Lestrange", correct: true},
             { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
+            { text: "Ginny Weasley", correct: true}
         ]
     },
     {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
+        question : "Qual dos seguintes nomes é Squib (non-magical person who was born to at least one magical parent)? ",
          answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
+            { text: "Argus Filch", correct: true},
+            { text: "Dolores Umbridge", correct: false},
+            { text: "Kingsley Shacklebolt", correct: false},
+            { text: "Rubeus Hagrid", correct: false}
         ]
     },
     {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
+        question : "Quem Molly Weasley matou na batalhe de Hogwarts?",
          answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
-        ]
-    },
-    {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
-         answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
-        ]
-    },
-    {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
-         answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
-        ]
-    },
-    {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
-         answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
-        ]
-    },
-    {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
-         answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
-        ]
-    },
-    {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
-         answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
-        ]
-    },
-    {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
-         answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
-        ]
-    },
-    {
-        question : "Qual dos seguintes nomes pertence a Ravenclaw?",
-         answers: [
-            { text: "Cho Chang", correct: true},
-            { text: "Neville Longbottom", correct: false},
-            { text: "Hermione Granger", correct: false},
-            { text: "Ron Weasley", correct: false}
+            { text: "Lord Voldemort", correct: false},
+            { text: "Dolores Umbridge", correct: false},
+            { text: "Bellatrix Lestrange", correct: true},
+            { text: "Lucius Malfoy", correct: false}
         ]
     }
     
@@ -267,7 +233,7 @@ loadQuestions()
 //Questions
 function GetQuestionTemplate() {
     questionHandler.innerHTML = ""
-    let questionsTotal = 7
+    
     for (let index = 0; index < questionsTotal; index++) {
         let questionTemplate = `<div id="question${index}"> Question </div>
         <div class="grid-buttonImage-container">
@@ -325,12 +291,13 @@ function selectAnswer(e, answerButtonsElement, imageRes) {
             }
             return true;
         })
+        //Play fail sound
     }
     else{
-        //Appear image
-        currentPlayerScore.innerText = parseInt(currentPlayerScore.innerText) + 2
+        //Appear image and add points
+        currentPlayerScore.innerText = parseInt(currentPlayerScore.innerText) + 5
         characterName = selectedButton.innerText;
-        
+        //Play sucess sound
         
     }
     //Disable buttons
@@ -347,6 +314,12 @@ function selectAnswer(e, answerButtonsElement, imageRes) {
 
     imageRes.src = character.image
     imageRes.alt = character.name
+
+    answerasked++
+    if (CheckAnsweredAll()) {
+        console.log('Calculate house points...')
+        CalculateHousePoints()
+    }
 }
 
 function setStatusClass(element, correct) {
@@ -364,32 +337,33 @@ function clearStatusClass(element) {
   }
 
 
-
+//House button
 gryffinbtn.addEventListener('click', function(){
     currentPlayerScore = scorespanArray[0]
-    BeingSorted(gryffinbtn)
+    BeingSorted(document.getElementById('griffinImg'))
     
 })
 
 puffinbtn.addEventListener('click', function(){
     currentPlayerScore = scorespanArray[1]
-    BeingSorted(puffinbtn)
+    BeingSorted(document.getElementById('badgerImg'))
 })
 
 serpentnbtn.addEventListener('click', function(){
     currentPlayerScore = scorespanArray[3]
-    BeingSorted(serpentnbtn)
+    BeingSorted(document.getElementById('serpentImg'))
 })
 
 ravennbtn.addEventListener('click', function(){
     currentPlayerScore = scorespanArray[2]
-    BeingSorted(ravennbtn)
+    BeingSorted(document.getElementById('ravenImg'))
 })
 
-function BeingSorted(houseButton) {
+function BeingSorted(houseImg) {
+    houseImage = houseImg.src
     sortbtn.classList.add('hide')
     booklet.classList.remove('hide')
-    const modal = closeModalButtons.closest('.modalbooklet')
+    const modal = closeModalButtons[0].closest('.modalbooklet')
     closeModal(modal)
     for (let i = 0; i < scorespanArray.length; i++) {
         if (currentPlayerScore == scorespanArray[i]) {
@@ -401,4 +375,41 @@ function BeingSorted(houseButton) {
     }
 }
 
+function CheckAnsweredAll() {
+    console.log(answerasked)
+    if (answerasked >= questionsTotal) {
+        return true
+    }
+    return false
+}
 
+function CalculateHousePoints() {
+    let houseWinner
+    let housepointAmount = 0
+    for (let index = 0; index < scorespanArray.length; index++) {
+        if (scorespanArray[index].innerText == housepointAmount && scorespanArray[index] == currentPlayerScore) {
+            //Same amount of points but the next is player's house
+            houseWinner = scorespanArray[index]
+        }
+        if (scorespanArray[index].innerText > housepointAmount) {
+            //Better than the actual, replace it to the best...
+            housepointAmount = scorespanArray[index].innerText
+            houseWinner = scorespanArray[index]
+        }
+        
+    }
+    console.log(housepointAmount)
+    console.log(houseWinner)
+    if (houseWinner == currentPlayerScore) {
+        console.log('Vicotry')
+        // Win Condition
+        document.querySelector('#housewinner').src = houseImage
+        document.querySelector('#wintxt').innerText = ` Parabéns, ajudastes a tua casa ganhar a House Cup com ${housepointAmount} pontos`
+        openModal(winModal)
+    }
+    else{
+        console.log('Defeat')
+        //Lose Condition
+        openModal(loseModal)
+    }
+}

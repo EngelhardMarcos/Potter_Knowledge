@@ -23,10 +23,10 @@
     <div class="leaderboard">
         <table>
             <tr>
-                <td> <img src="../assets/img/house/Gryffindor.png" alt="Gryffindor" width="160px" height="200px"></td>
-                <td> <img src="../assets/img/house/Hufflepuff.png" alt="Hufflepuff" width="160px" height="200px"></td>
-                <td> <img src="../assets/img/house/Ravenclaw.png" alt="Ravenclaw" width="160px" height="200px"></td>
-                <td> <img src="../assets/img/house/Slytherin.png" alt="Slytherin" width="160px" height="200px"></td>
+                <td> <img src="../assets/img/house/Gryffindor.png" alt="Gryffindor" width="160px" height="200px" id="griffinImg"></td>
+                <td> <img src="../assets/img/house/Hufflepuff.png" alt="Hufflepuff" width="160px" height="200px" id="badgerImg"></td>
+                <td> <img src="../assets/img/house/Ravenclaw.png" alt="Ravenclaw" width="160px" height="200px" id="ravenImg"></td>
+                <td> <img src="../assets/img/house/Slytherin.png" alt="Slytherin" width="160px" height="200px" id="serpentImg"></td>
             </tr>
             <tr>
                 <td><span id="gryffscore" class="text-white "> 0</span></td>
@@ -94,16 +94,18 @@
     </div>
     <div class="modalbooklet" id="modalWin">
         <div class="modalbooklet-header">
-            <img src="" alt="">
-            <img src="" alt="">
+            <img src="../assets/img/booklet/HogwartsHouseCup.png" width="160px" height="200px" alt=" House cup">
+            <img src="" alt="house winner" id="housewinner" width="160px" height="200px">
+            <button data-close-button class="close-button">&times;</button>
         </div>
-        <div class="modalbooklet-body">
+        <div class="modalbooklet-body" id="wintxt">
             <p> Parabéns, ajudastes a tua casa ganhar a House Cup com x pontos </p>
         </div>
     </div>
     <div class="modalbooklet" id="modalLose">
         <div class="modalbooklet-header">
             <p> Sorte para a próxima, ainda não é desta...</p>
+            <button data-close-button class="close-button">&times;</button>
         </div>
         <div class="modalbooklet-body">
             <div class="text-center mt-4">
@@ -112,7 +114,7 @@
                 </a>
             </div>
             <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-light" href="htmls/booklet.html">                      
+                <a class="btn btn-xl btn-outline-light" href="../index.html">                      
                     Voltar a Home
                 </a>
             </div>

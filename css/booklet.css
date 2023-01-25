@@ -169,8 +169,8 @@ input{
 }
 .grid-buttonImage-container{
     display: grid;
-    left: 20em;
-    row-gap: 10em;
+    left: 10em;
+    row-gap: 5em;
     justify-items: center;
     align-items: center;
     grid-template-columns: auto auto;
@@ -178,7 +178,7 @@ input{
 }
 
 .gridbtn{
-    width: 400px;
+    width: 15em;
     display: grid;
     grid-template-columns: repeat(1,auto);
     gap: 10px;
